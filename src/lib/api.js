@@ -14,3 +14,17 @@ export async function getWorkouts() {
 
     return response.json();
 }
+
+export async function getWorkout(id) {
+    const response = await fetch(`${API_URL}/${id}`, {
+        next: {
+            revalidate: 60,
+        },
+    });
+
+    if (!response.ok) {
+        return null;
+    }
+
+    return response.json();
+}
