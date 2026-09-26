@@ -1,36 +1,190 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FitLog — Workout Library
 
-## Getting Started
+FitLog is a dark, responsive workout library built with Next.js. It allows users to browse workouts, view detailed exercise information, create a daily workout plan, save workouts for later, and mark completed workouts.
 
-First, run the development server:
+## Live Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Added deployed project URL here:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## GitHub Repository
 
-## Learn More
+Added GitHub repository URL here:
 
-To learn more about Next.js, take a look at the following resources:
+https://github.com/russeldoc/FitLog-Next-Js-Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Description
 
-## Deploy on Vercel
+FitLog is designed as a simple and focused workout companion.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Users can:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Browse a library of workouts
+- Sort workouts by duration, calories, or rating
+- View detailed workout information
+- Add workouts to today's plan
+- Save workouts for later
+- Remove workouts from their plan or saved list
+- Mark workouts as completed
+- View workout statistics
+- Keep plan and saved data after refreshing the browser
+
+The interface uses a dark fitness-focused design with a lime accent color and responsive layouts for desktop and mobile devices.
+
+---
+
+## Technologies Used
+
+- Next.js
+- React
+- JavaScript
+- Tailwind CSS
+- Lucide React
+- Next.js App Router
+- REST API
+- Browser LocalStorage
+
+---
+
+## Features
+
+### 1. Workout Library
+
+The home page displays workouts fetched from the FitLog API.
+
+Each workout card includes:
+
+- Workout image
+- Muscle groups
+- Workout name
+- Equipment
+- Duration
+- Calories
+- Rating
+
+---
+
+### 2. Workout Sorting
+
+The workout library can be sorted by:
+
+- Duration
+- Calories
+- Rating
+
+The default sorting option is Duration.
+
+---
+
+### 3. Workout Details
+
+Each workout has a dedicated detail page containing:
+
+- Large workout image
+- Description
+- Muscle groups
+- Equipment
+- Difficulty
+- Sets
+- Reps
+- Duration
+- Calories
+- Rating
+- Step-by-step instructions
+
+---
+
+### 4. Today's Plan
+
+Users can add workouts to their daily plan.
+
+The plan supports a maximum of five workouts.
+
+The My Plan page displays:
+
+- Number of exercises
+- Total minutes
+- Total calories
+- Workout cards
+- View Details
+- Mark as Done
+- Remove workout
+
+---
+
+### 5. Save for Later
+
+Users can save workouts for later.
+
+Saved workouts can be viewed from the Saved tab on the My Plan page.
+
+---
+
+### 6. Workout Completion
+
+Users can mark a planned workout as completed.
+
+Completed workouts are visually displayed as completed and remain saved after refreshing the browser.
+
+---
+
+### 7. LocalStorage Persistence
+
+FitLog stores user selections in browser LocalStorage.
+
+The following data is persisted:
+
+- Today's plan
+- Saved workouts
+- Completed workouts
+
+---
+
+### 8. Toast Notifications
+
+User actions provide feedback through toast notifications.
+
+Examples:
+
+- Added to today's plan
+- Already in today's plan
+- Saved for later
+- Removed from today's plan
+- Removed from saved
+- Workout marked as done
+- Today's plan is full
+
+---
+
+### 9. Responsive Design
+
+The application is designed for:
+
+- Mobile
+- Tablet
+- Desktop
+
+The navigation, hero section, workout cards, workout details, and My Plan page adapt to different screen sizes.
+
+---
+
+### 10. Loading & Error States
+
+The application includes:
+
+- Workout library loading UI
+- Workout detail loading skeleton
+- Custom 404 page
+- Invalid workout handling
+
+---
+
+## API
+
+FitLog uses the following API:
+
+```text
+https://api.abcz.workers.dev/api/fitlog
