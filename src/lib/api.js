@@ -1,5 +1,5 @@
 export const API_URL =
-    process.env.NEXT_PUBLIC_API_URL;
+    "https://api.abcz.workers.dev/api/fitlog";
 
 export async function getWorkouts() {
     const response = await fetch(API_URL, {
