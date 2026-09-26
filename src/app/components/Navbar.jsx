@@ -5,10 +5,13 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useFitLog } from "../../context/FitLogContext";
 
 const Navbar = () => {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
+
+    const { planIds, savedIds } = useFitLog();
 
     const isWorkoutActive =
         pathname === "/" || pathname.startsWith("/workout");
@@ -41,7 +44,6 @@ const Navbar = () => {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden items-center gap-2 md:flex">
-
                     <Link
                         href="/"
                         className={`rounded-full px-5 py-2 text-sm font-bold transition ${isWorkoutActive
@@ -61,26 +63,23 @@ const Navbar = () => {
                     >
                         My Plan
                     </Link>
-
                 </nav>
 
                 {/* Desktop Status Badges */}
                 <div className="hidden items-center gap-2 md:flex">
-
                     <Link
                         href="/my-plan"
                         className="rounded-full bg-lime-300 px-4 py-2 text-xs font-black text-black transition hover:bg-lime-200"
                     >
-                        PLAN 0
+                        PLAN {planIds.length}
                     </Link>
 
                     <Link
                         href="/my-plan"
                         className="rounded-full border border-white/30 px-4 py-2 text-xs font-black text-white transition hover:bg-white/10"
                     >
-                        SAVED 0
+                        SAVED {savedIds.length}
                     </Link>
-
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -97,15 +96,12 @@ const Navbar = () => {
                         <Menu size={22} />
                     )}
                 </button>
-
             </div>
 
             {/* Mobile Navigation */}
             {open && (
                 <div className="border-t border-white/10 px-5 py-5 md:hidden">
-
                     <nav className="flex flex-col gap-3">
-
                         <Link
                             href="/"
                             onClick={() => setOpen(false)}
@@ -128,15 +124,13 @@ const Navbar = () => {
                             My Plan
                         </Link>
 
-                        {/* Mobile Badges */}
                         <div className="mt-2 flex gap-2">
-
                             <Link
                                 href="/my-plan"
                                 onClick={() => setOpen(false)}
                                 className="rounded-full bg-lime-300 px-4 py-2 text-xs font-black text-black"
                             >
-                                PLAN 0
+                                PLAN {planIds.length}
                             </Link>
 
                             <Link
@@ -144,13 +138,10 @@ const Navbar = () => {
                                 onClick={() => setOpen(false)}
                                 className="rounded-full border border-white/30 px-4 py-2 text-xs font-black"
                             >
-                                SAVED 0
+                                SAVED {savedIds.length}
                             </Link>
-
                         </div>
-
                     </nav>
-
                 </div>
             )}
         </header>

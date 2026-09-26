@@ -13,7 +13,11 @@ import {
     Star,
 } from "lucide-react";
 
+import { useFitLog } from "../../context/FitLogContext";
+
 const WorkoutDetails = ({ workout }) => {
+    const { addToPlan, saveForLater } = useFitLog();
+
     return (
         <main className="px-5 py-10 md:py-16">
             <div className="mx-auto max-w-7xl">
@@ -127,15 +131,20 @@ const WorkoutDetails = ({ workout }) => {
 
                         {/* Actions */}
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                            {/* Add To Plan */}
                             <button
                                 type="button"
+                                onClick={() => addToPlan(workout.id)}
                                 className="flex-1 rounded-full bg-lime-300 px-6 py-3.5 text-sm font-black text-black transition hover:scale-[1.02] hover:bg-lime-200"
                             >
                                 ADD TO TODAY'S PLAN
                             </button>
 
+                            {/* Save For Later */}
                             <button
                                 type="button"
+                                onClick={() => saveForLater(workout.id)}
                                 className="flex-1 rounded-full border border-white/20 px-6 py-3.5 text-sm font-black text-white transition hover:bg-white/10"
                             >
                                 SAVE FOR LATER
