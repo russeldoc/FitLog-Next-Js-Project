@@ -12,12 +12,15 @@ const FitLogContext = createContext(null);
 export const FitLogProvider = ({ children }) => {
     const [planIds, setPlanIds] = useState([]);
     const [savedIds, setSavedIds] = useState([]);
+    const [completedIds, setCompletedIds] = useState([]);
     const [toast, setToast] = useState("");
 
     // Load saved data from localStorage
     useEffect(() => {
         const storedPlan = localStorage.getItem("fitlog-plan");
         const storedSaved = localStorage.getItem("fitlog-saved");
+        const storedCompleted =
+            localStorage.getItem("fitlog-completed");
 
         if (storedPlan) {
             setPlanIds(JSON.parse(storedPlan));
@@ -25,6 +28,10 @@ export const FitLogProvider = ({ children }) => {
 
         if (storedSaved) {
             setSavedIds(JSON.parse(storedSaved));
+        }
+
+        if (storedCompleted) {
+            setCompletedIds(JSON.parse(storedCompleted));
         }
     }, []);
 
@@ -43,6 +50,14 @@ export const FitLogProvider = ({ children }) => {
             JSON.stringify(savedIds)
         );
     }, [savedIds]);
+
+    // Save completed workouts to localStorage
+    useEffect(() => {
+        localStorage.setItem(
+            "fitlog-completed",
+            JSON.stringify(completedIds)
+        );
+    }, [completedIds]);
 
     // Toast helper
     const showToast = (message) => {
@@ -82,11 +97,41 @@ export const FitLogProvider = ({ children }) => {
         showToast("Saved for later");
     };
 
-    // Remove from saved list
+    // Remove workout from today's plan
+    const removeFromPlan = (id) => {
+        setPlanIds((current) =>
+            current.filter((planId) => planId !== id)
+        );
+
+        setCompletedIds((current) =>
+            current.filter((completedId) => completedId !== id)
+        );
+
+        showToast("Removed from today's plan");
+    };
+
+    // Remove workout from saved list
     const removeFromSaved = (id) => {
         setSavedIds((current) =>
             current.filter((savedId) => savedId !== id)
         );
+
+        showToast("Removed from saved");
+    };
+
+    // Mark workout as done
+    const markAsDone = (id) => {
+        if (completedIds.includes(id)) {
+            showToast("Workout already completed");
+            return;
+        }
+
+        setCompletedIds((current) => [
+            ...current,
+            id,
+        ]);
+
+        showToast("Workout marked as done");
     };
 
     return (
@@ -94,9 +139,12 @@ export const FitLogProvider = ({ children }) => {
             value={{
                 planIds,
                 savedIds,
+                completedIds,
                 addToPlan,
                 saveForLater,
+                removeFromPlan,
                 removeFromSaved,
+                markAsDone,
             }}
         >
             {children}
