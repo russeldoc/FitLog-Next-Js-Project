@@ -16,7 +16,7 @@ const Hero = () => {
                     </p>
 
                     {/* Heading */}
-                    <h1 className="max-w-3xl text-5xl font-black leading-[0.9] tracking-tight md:text-6xl lg:text-7xl">
+                    <h1 className="max-w-3xl text-4xl font-black leading-[0.92] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                         TRAIN WITH INTENT.
                         <br />
                         LOG EVERY SET.
@@ -40,7 +40,7 @@ const Hero = () => {
                 </div>
 
                 {/* Hero Image */}
-                <div className="relative flex min-h-[400px] items-center justify-center overflow-hidden bg-zinc-950 md:min-h-[520px]">
+                <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-zinc-950 sm:min-h-[400px] md:min-h-[520px]">
 
                     {/* Background Glow */}
                     <div className="absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-lime-300/10 blur-3xl" />
@@ -51,7 +51,7 @@ const Hero = () => {
                         alt="FitLog workout illustration"
                         width={700}
                         height={700}
-                        className="relative z-10 h-full max-h-[520px] w-full object-contain p-4 md:p-6"
+                        className="relative z-10 h-full max-h-[520px] w-full object-contain p-6 sm:p-8 md:p-6"
                         priority
                     />
 

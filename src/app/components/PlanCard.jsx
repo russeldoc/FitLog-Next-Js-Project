@@ -33,21 +33,21 @@ const PlanCard = ({ workout, activeTab }) => {
     return (
         <article
             className={`overflow-hidden rounded-2xl border bg-zinc-900 transition ${isCompleted
-                    ? "border-lime-300/30 opacity-70"
-                    : "border-white/10"
+                ? "border-lime-300/30 opacity-70"
+                : "border-white/10"
                 }`}
         >
             <div className="grid md:grid-cols-[220px_1fr]">
 
                 {/* Image */}
-                <div className="relative h-56 bg-zinc-950 md:h-full">
+                <div className="relative h-48 bg-zinc-950 sm:h-56 md:h-full">
                     <Image
                         src={workout.image}
                         alt={workout.name}
                         fill
                         className={`object-cover ${isCompleted
-                                ? "grayscale"
-                                : ""
+                            ? "grayscale"
+                            : ""
                             }`}
                         sizes="(max-width: 768px) 100vw, 220px"
                     />
@@ -74,9 +74,9 @@ const PlanCard = ({ workout, activeTab }) => {
                         <div className="flex items-start justify-between gap-4">
                             <div>
                                 <h3
-                                    className={`text-2xl font-black tracking-tight ${isCompleted
-                                            ? "line-through text-white/50"
-                                            : ""
+                                    className={`text-2xl font-black tracking-tight sm:text-2xl ${isCompleted
+                                        ? "line-through text-white/50"
+                                        : ""
                                         }`}
                                 >
                                     {workout.name}
@@ -140,8 +140,8 @@ const PlanCard = ({ workout, activeTab }) => {
                                 }
                                 disabled={isCompleted}
                                 className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-black transition ${isCompleted
-                                        ? "cursor-not-allowed bg-lime-300/20 text-lime-300"
-                                        : "border border-white/20 text-white hover:bg-white/10"
+                                    ? "cursor-not-allowed bg-lime-300/20 text-lime-300"
+                                    : "border border-white/20 text-white hover:bg-white/10"
                                     }`}
                             >
                                 <Check size={16} />
